@@ -17,7 +17,7 @@ class SettingsActivity : Activity() {
             addLabel(label)
             val seek = SeekBar(this).apply {
                 this.max = max
-                progress = prefs.getInt(key, def)
+                progress = prefs.getInt(key, def).coerceIn(0, max)
                 setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
                     override fun onProgressChanged(s: SeekBar?, p: Int, fromUser: Boolean) { prefs.edit().putInt(key, p).apply() }
                     override fun onStartTrackingTouch(s: SeekBar?) {}
@@ -35,7 +35,7 @@ class SettingsActivity : Activity() {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, colors.map { it.first })
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
-        spinner.setSelection(prefs.getInt("colorIdx", 0))
+        spinner.setSelection(prefs.getInt("colorIdx", 0).coerceIn(0, colors.size - 1))
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p: AdapterView<*>?, v: android.view.View?, pos: Int, id: Long) { prefs.edit().putInt("colorIdx", pos).apply() }
             override fun onNothingSelected(p: AdapterView<*>?) {}
@@ -46,7 +46,7 @@ class SettingsActivity : Activity() {
         val preview = TextView(this).apply {
             text = "9:41"
             textSize = 48f
-            setTextColor(colors[prefs.getInt("colorIdx", 0)].second)
+            setTextColor(colors[prefs.getInt("colorIdx", 0).coerceIn(0, colors.size - 1)].second)
         }
         layout.addView(preview)
 

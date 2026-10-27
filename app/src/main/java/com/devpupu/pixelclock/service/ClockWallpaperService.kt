@@ -44,9 +44,9 @@ class ClockWallpaperService : WallpaperService() {
                     canvas?.let {
                         val hasNotifs = com.devpupu.pixelclock.service.NotifListener.count > 0
                         val prefs = applicationContext.getSharedPreferences("clock", Context.MODE_PRIVATE)
-                        val baseAlpha = prefs.getInt("opacity", 35) * 2 + 20
+                        val baseAlpha = prefs.getInt("opacity", 35).coerceIn(0, 100) * 2 + 20
                         val alpha = if (hasNotifs) baseAlpha / 2 else baseAlpha
-                        val sizeScale = prefs.getInt("size", 50) / 50f
+                        val sizeScale = prefs.getInt("size", 50).coerceIn(0, 100) / 50f
                         val colorIdx = prefs.getInt("colorIdx", 0)
                         val colors = intArrayOf(Color.WHITE, Color.CYAN, Color.YELLOW, Color.GREEN)
                         val color = colors.getOrElse(colorIdx) { Color.WHITE }
