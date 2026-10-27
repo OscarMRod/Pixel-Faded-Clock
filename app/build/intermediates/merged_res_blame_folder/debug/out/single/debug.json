@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "com.devpupu.pixelclock.app-merged_res-39:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.devpupu.pixelclock.app-main-41:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.devpupu.pixelclock.app-merged_res-39:/xml_wallpaper.xml.flat",
+        "source": "com.devpupu.pixelclock.app-main-41:/xml/wallpaper.xml"
+    }
+]
