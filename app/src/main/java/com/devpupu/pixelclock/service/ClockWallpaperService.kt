@@ -20,7 +20,7 @@ class ClockWallpaperService : WallpaperService() {
             isAntiAlias = true
             textAlign = Paint.Align.CENTER
         }
-        private var running = false
+        @Volatile private var running = false
 
         override fun onSurfaceCreated(holder: SurfaceHolder?) {
             super.onSurfaceCreated(holder)

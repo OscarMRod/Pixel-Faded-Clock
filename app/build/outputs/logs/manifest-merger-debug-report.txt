@@ -97,9 +97,9 @@ ADDED from /home/orod/.hermes/cache/scratch/pixel-faded-clock/app/src/main/Andro
 	android:name
 		ADDED from /home/orod/.hermes/cache/scratch/pixel-faded-clock/app/src/main/AndroidManifest.xml:8:27-74
 activity#com.devpupu.pixelclock.SettingsActivity
-ADDED from /home/orod/.hermes/cache/scratch/pixel-faded-clock/app/src/main/AndroidManifest.xml:11:9-78
+ADDED from /home/orod/.hermes/cache/scratch/pixel-faded-clock/app/src/main/AndroidManifest.xml:11:9-79
 	android:exported
-		ADDED from /home/orod/.hermes/cache/scratch/pixel-faded-clock/app/src/main/AndroidManifest.xml:11:52-75
+		ADDED from /home/orod/.hermes/cache/scratch/pixel-faded-clock/app/src/main/AndroidManifest.xml:11:52-76
 	android:name
 		ADDED from /home/orod/.hermes/cache/scratch/pixel-faded-clock/app/src/main/AndroidManifest.xml:11:19-51
 service#com.devpupu.pixelclock.service.ClockWallpaperService

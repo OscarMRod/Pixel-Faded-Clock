@@ -53,11 +53,11 @@
 33            </intent-filter>
 34        </activity>
 35        <activity
-35-->/home/orod/.hermes/cache/scratch/pixel-faded-clock/app/src/main/AndroidManifest.xml:11:9-78
+35-->/home/orod/.hermes/cache/scratch/pixel-faded-clock/app/src/main/AndroidManifest.xml:11:9-79
 36            android:name="com.devpupu.pixelclock.SettingsActivity"
 36-->/home/orod/.hermes/cache/scratch/pixel-faded-clock/app/src/main/AndroidManifest.xml:11:19-51
-37            android:exported="true" />
-37-->/home/orod/.hermes/cache/scratch/pixel-faded-clock/app/src/main/AndroidManifest.xml:11:52-75
+37            android:exported="false" />
+37-->/home/orod/.hermes/cache/scratch/pixel-faded-clock/app/src/main/AndroidManifest.xml:11:52-76
 38
 39        <service
 39-->/home/orod/.hermes/cache/scratch/pixel-faded-clock/app/src/main/AndroidManifest.xml:12:9-15:19
