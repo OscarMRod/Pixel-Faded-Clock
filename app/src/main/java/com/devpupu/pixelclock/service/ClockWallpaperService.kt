@@ -38,6 +38,11 @@ class ClockWallpaperService : WallpaperService() {
                 while (running) {
                     val canvas: Canvas? = h.lockCanvas()
                     canvas?.let {
+                        val hasNotifs = com.devpupu.pixelclock.service.NotifListener.count > 0
+                        val alpha = if (hasNotifs) 60 else 90
+                        paint.color = Color.argb(alpha, 255, 255, 255)
+                        val size = if (hasNotifs) 120f else 200f
+                        paint.textSize = size
                         it.drawColor(Color.BLACK)
                         val time = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
                         it.drawText(time, it.width / 2f, it.height / 2f, paint)
