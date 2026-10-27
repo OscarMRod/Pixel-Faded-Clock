@@ -35,7 +35,10 @@ class ClockWallpaperService : WallpaperService() {
         private fun drawLoop(holder: SurfaceHolder?) {
             val h = holder ?: return
             Thread {
+                var tick = 0
                 while (running) {
+                    if (tick % 600 == 0) com.devpupu.pixelclock.service.WeatherFetcher.fetch()
+                    tick++
                     val canvas: Canvas? = h.lockCanvas()
                     canvas?.let {
                         val hasNotifs = com.devpupu.pixelclock.service.NotifListener.count > 0
@@ -48,6 +51,8 @@ class ClockWallpaperService : WallpaperService() {
                         it.drawColor(Color.BLACK)
                         val time = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
                         it.drawText(time, it.width / 2f, it.height / 2f, paint)
+                        paint.textSize = 60f
+                        it.drawText(com.devpupu.pixelclock.service.WeatherFetcher.text, it.width / 2f, it.height / 2f + 120f, paint)
                         h.unlockCanvasAndPost(it)
                     }
                     Thread.sleep(1000)
