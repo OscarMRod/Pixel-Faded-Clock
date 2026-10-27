@@ -39,7 +39,9 @@ class ClockWallpaperService : WallpaperService() {
                     val canvas: Canvas? = h.lockCanvas()
                     canvas?.let {
                         val hasNotifs = com.devpupu.pixelclock.service.NotifListener.count > 0
-                        val alpha = if (hasNotifs) 60 else 90
+                        val prefs = applicationContext.getSharedPreferences("clock", Context.MODE_PRIVATE)
+                        val baseAlpha = prefs.getInt("opacity", 35) * 2 + 20  // 20..220
+                        val alpha = if (hasNotifs) baseAlpha / 2 else baseAlpha
                         paint.color = Color.argb(alpha, 255, 255, 255)
                         val size = if (hasNotifs) 120f else 200f
                         paint.textSize = size
