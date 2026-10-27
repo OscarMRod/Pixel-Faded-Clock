@@ -50,6 +50,22 @@ class SettingsActivity : Activity() {
         }
         layout.addView(preview)
 
+        addLabel("Background image")
+        val imgBtn = Button(this).apply { text = "Pick image"; setOnClickListener {
+            val i = Intent(Intent.ACTION_OPEN_DOCUMENT).apply { addCategory(Intent.CATEGORY_OPENABLE); type = "image/*" }
+            startActivityForResult(i, 100)
+        } }
+        layout.addView(imgBtn)
+
         setContentView(layout)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: android.content.Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 100 && resultCode == RESULT_OK) {
+            val uri = data?.data ?: return
+            contentResolver.takePersistableUriPermission(uri, android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            getSharedPreferences("clock", Context.MODE_PRIVATE).edit().putString("bgUri", uri.toString()).apply()
+        }
     }
 }

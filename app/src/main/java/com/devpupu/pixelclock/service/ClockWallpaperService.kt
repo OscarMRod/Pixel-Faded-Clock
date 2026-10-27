@@ -52,7 +52,16 @@ class ClockWallpaperService : WallpaperService() {
                         val color = colors.getOrElse(colorIdx) { Color.WHITE }
                         paint.color = Color.argb(alpha, Color.red(color), Color.green(color), Color.blue(color))
                         paint.textSize = 200f * sizeScale
-                        it.drawColor(Color.BLACK)
+                        val bgUriStr = prefs.getString("bgUri", null)
+                        if (bgUriStr != null) {
+                            try {
+                                val uri = android.net.Uri.parse(bgUriStr)
+                                val bmp = android.provider.MediaStore.Images.Media.getBitmap(applicationContext.contentResolver, uri)
+                                it.drawBitmap(bmp, null, android.graphics.Rect(0,0,it.width,it.height), null)
+                            } catch (e: Exception) { it.drawColor(Color.BLACK) }
+                        } else {
+                            it.drawColor(Color.BLACK)
+                        }
                         val time = SimpleDateFormat("HH:mm", Locale.getDefault()).format(Date())
                         it.drawText(time, it.width / 2f, it.height / 2f, paint)
                         paint.textSize = 60f
